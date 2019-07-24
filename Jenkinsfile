@@ -17,7 +17,17 @@ pipeline {
                     archiveArtifacts artifacts : '**/*.war'
                 }
             }
-        }//end build servlet project
+        }//end stage: build servlet project
+
+        stage ('Deploy Build in Staging Area') {
+            steps{
+
+                build job : 'Deploy-StagingArea-Pipeline'
+
+
+            }
+
+        }
 
         // stage ('Deploy Build in Staging Area'){
         //     steps{
@@ -46,6 +56,6 @@ pipeline {
         //         }
         //     }
         // }//end deploy to production        
-        
+
     }//end stages 
 }
